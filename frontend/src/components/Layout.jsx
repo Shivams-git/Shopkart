@@ -1,9 +1,10 @@
 import Brand from "./Brand";
+import ThemePicker from "./ThemePicker";
 
 function Artwork({ password }) {
   return (
     <aside className="art">
-      <div>
+      <div className="art-content">
         <span className="tag">
           {password ? "Account security" : "Shop with ease"}
         </span>
@@ -26,8 +27,13 @@ export default function Layout({ children, password, onHome }) {
   return (
     <main className="auth">
       <section className="panel">
-        <Brand onClick={onHome} />
-        <div className="copy">{children}</div>
+        <header className="auth-header">
+          <Brand onClick={onHome} />
+          <ThemePicker />
+        </header>
+        <div className="auth-body">
+          <div className="copy">{children}</div>
+        </div>
       </section>
       <Artwork password={password} />
     </main>
